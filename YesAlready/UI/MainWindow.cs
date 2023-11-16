@@ -324,6 +324,18 @@ internal class MainWindow : Window
         IndentedTextColored(shadedColor, "Automatically closes the SalvageResults window when done desynthing.");
 
         #endregion
+        #region PurifyResultCommence
+
+        var purifyResultsCommenceDialog = P.Config.AetherialReductionCommence;
+        if (ImGui.Checkbox("PurifyResultAutomatic", ref purifyResultsCommenceDialog))
+        {
+            P.Config.AetherialReductionCommence = purifyResultsCommenceDialog;
+            P.Config.Save();
+        }
+
+        IndentedTextColored(shadedColor, "Automatically start reducing by clicking \"Automatic\" when the PurifyResult window appears.");
+
+        #endregion
         #region PurifyResult
 
         var purifyResultsDialog = P.Config.AetherialReductionResults;

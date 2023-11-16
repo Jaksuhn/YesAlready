@@ -44,6 +44,7 @@ public partial class Configuration() : IPluginConfiguration
     public bool RetainerTransferProgressConfirm { get; set; } = false;
     public bool DesynthesisResults {  get; set; } = false;
     public bool AetherialReductionResults { get; set; } = false;
+    public bool AetherialReductionCommence { get; set; } = false;
 
     public static Configuration Load(DirectoryInfo configDirectory)
     {
