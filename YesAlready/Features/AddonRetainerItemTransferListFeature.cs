@@ -1,19 +1,17 @@
-using Dalamud.Game.Addon.Lifecycle.AddonArgTypes;
 using Dalamud.Game.Addon.Lifecycle;
-using ECommons.Automation;
-using ECommons.DalamudServices;
+using Dalamud.Game.Addon.Lifecycle.AddonArgTypes;
 using FFXIVClientStructs.FFXIV.Component.GUI;
+using ClickLib.Clicks;
 using YesAlready.BaseFeatures;
 
 namespace YesAlready.Features;
 
-internal class AddonSalvageResult : BaseFeature
+internal class AddonRetainerItemTransferListFeature : BaseFeature
 {
     public override void Enable()
     {
         base.Enable();
-        AddonLifecycle.RegisterListener(AddonEvent.PostUpdate, "SalvageResult", AddonUpdate);
-        AddonLifecycle.RegisterListener(AddonEvent.PostUpdate, "SalvageAutoDialog", AddonUpdate);
+        AddonLifecycle.RegisterListener(AddonEvent.PostDraw, "RetainerItemTransferList", AddonUpdate);
     }
 
     public override void Disable()
@@ -26,10 +24,10 @@ internal class AddonSalvageResult : BaseFeature
     {
         var addon = (AtkUnitBase*)addonInfo.Addon;
 
-        if (!P.Active || !P.Config.DesynthesisResults)
+        if (!P.Active || !P.Config.RetainerTransferListConfirm)
             return;
+        
 
-        Svc.Log.Debug("Closing Salvage Auto Results menu");
-        Callback.Fire(addon, true, 1);
+        ClickRetainerItemTransferList.Using((nint)addon).Confirm();
     }
 }

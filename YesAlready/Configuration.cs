@@ -41,9 +41,13 @@ public partial class Configuration() : IPluginConfiguration
     public bool GuildLeveDifficultyConfirm { get; set; } = false;
     public bool FallGuysRegisterConfirm { get; set; } = false;
     public bool FallGuysExitConfirm { get; set; } = false;
+    public bool RetainerTransferListConfirm { get; set; } = false;
     public bool RetainerTransferProgressConfirm { get; set; } = false;
     public bool DesynthesisResults {  get; set; } = false;
     public bool AetherialReductionResults { get; set; } = false;
+    public bool FashionCheckQuit { get; set; } = false;
+    public bool LordOfVerminionQuit { get; set; } = false;
+    public bool ChocoboRacingQuit { get; set; } = false;
 
     public static Configuration Load(DirectoryInfo configDirectory)
     {
