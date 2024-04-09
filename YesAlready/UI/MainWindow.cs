@@ -167,7 +167,7 @@ internal class MainWindow : Window
                 {
                     dtrList.Add(Svc.PluginInterface.InternalName);
                 }
-                config.Call("QueueSave");
+                config.Call("QueueSave", []);
             }
             IndentedTextColored(shadedColor, $"Display the status of the {Name} in the Server Info Bar (DTR Bar). Clicking toggles the plugin.");            
         }
@@ -602,6 +602,18 @@ internal class MainWindow : Window
         }
 
         IndentedTextColored(shadedColor, "Automatically quit Lord of Verminion when the results menu appears.");
+
+        #endregion
+        #region PartyFinderJoinConfirm
+
+        var pfConfirm = P.Config.PartyFinderJoinConfirm;
+        if (ImGui.Checkbox("LookingForGroup x SelectYesno", ref pfConfirm))
+        {
+            P.Config.PartyFinderJoinConfirm = pfConfirm;
+            P.Config.Save();
+        }
+
+        IndentedTextColored(shadedColor, "Automatically confirm when joining a party finder group.");
 
         #endregion
 

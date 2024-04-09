@@ -5,6 +5,8 @@ using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
+#nullable enable
+
 namespace YesAlready;
 
 public interface ITextNode
